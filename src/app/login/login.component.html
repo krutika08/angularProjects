@@ -1,0 +1,53 @@
+<!-- <ngx-spinner></ngx-spinner> -->
+<p changeText>Login Page</p>
+<form #LoginForm="ngForm" novalidate autocomplete="off">
+    <mat-form-field only-alphabets class="example-full-width">
+        <input matInput placeholder="Enter first name" name="fname" [(ngModel)] = "f12name" #fname="ngModel" required>
+      </mat-form-field>
+    <app-error-display [displayError]="fname.invalid && fname.errors.required && (fname.dirty || fname.touched || LoginForm .submitted)"
+       errorMsg="Please enter first name"></app-error-display>
+       
+    <mat-form-field class="example-full-width">
+       <input matInput type = "email" placeholder="Enter email" name="email" [(ngModel)] = "emailId" #email="ngModel"
+              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+    </mat-form-field>
+    <app-error-display [displayError]="email.invalid && email.errors.required && email.errors.pattern && (email.dirty || email.touched || LoginForm .submitted)"
+       errorMsg="Please enter valid email"></app-error-display>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Enter username" name="username" [(ngModel)] = "username" #uname="ngModel" required>
+    </mat-form-field>
+    <app-error-display [displayError]="uname.invalid && uname.errors.required && (uname.dirty || uname.touched || LoginForm .submitted)"
+       errorMsg="Please enter username"></app-error-display>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Enter password" type="password" minlength="5" maxlength="8"
+      name = "password" [(ngModel)] = "password" #pswd="ngModel" required>
+    </mat-form-field> 
+    <app-error-display [displayError]="pswd.invalid && pswd.errors.required && (pswd.dirty || pswd.touched || LoginForm .submitted)"
+       errorMsg="Please enter password"></app-error-display> 
+    <app-error-display [displayError]="pswd.invalid && pswd.errors.minlength && (pswd.dirty || pswd.touched || LoginForm .submitted)"
+       errorMsg="Please provide password greater than 5 characters"></app-error-display> 
+
+    <mat-form-field only-digits class="example-full-width">
+      <input matInput placeholder="Enter mobile number" name="mobnum" [(ngModel)] = "mobNo" #mobnum="ngModel" required>
+    </mat-form-field>
+    <app-error-display [displayError]="mobnum.invalid && mobnum.errors.required && (mobnum.dirty || mobnum.touched || LoginForm .submitted)"
+         errorMsg="Please enter mobile number"></app-error-display>
+
+  <div>
+    <span>
+        <button type = "submit" (click) = "login()">Login</button>
+    </span>
+    <span>
+      <button type="button" (click) = "success()">Success</button>
+  </span>
+  <span>
+    <button (click) = "error()">Error</button>
+</span>
+<span>
+  <button (click) = "warning()">Warning</button>
+</span>
+  </div>
+
+</form>
